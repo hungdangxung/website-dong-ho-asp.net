@@ -1,0 +1,51 @@
+﻿@model IEnumerable<DongHoDemo2.Models.Shipper>
+
+@{
+    ViewData["Title"] = "Quản lý người giao hàng";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="header">
+    <h1 class="page-header">
+        Quản lý người giao hàng
+    </h1>
+    <ol class="breadcrumb">
+        <li><a asp-area="Admin" asp-controller="Home" asp-action="Index">Trang chủ</a></li>
+        <li><a asp-area="Admin" asp-controller="AdminShippers" asp-action="Index">Quản lý người giao hàng</a></li>
+    </ol>
+</div>
+<div class="card">
+    <div class="card-content">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên người giao hàng</th>
+                        <th>Điện thoại</th>
+                        <th>Công ty</th>
+                        <th>Chức năng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                    <tr>
+                        <td>@item.ShipperId</td>
+                        <td>@item.ShipperName</td>
+                        <td>@item.Phone</td>
+                        <td>@item.Company</td>
+                        <td>
+                            <a class="btn btn-success btn-tone m-r-5" asp-area="Admin" asp-controller="AdminShippers" asp-action="Details" asp-route-id="@item.ShipperId">Xem</a>
+                            <a class="btn btn-secondary btn-tone m-r-5" asp-area="Admin" asp-controller="AdminShippers" asp-action="Edit" asp-route-id="@item.ShipperId">Sửa</a>
+                            <a class="btn btn-dark btn-tone m-r-5 disabled" asp-area="Admin" asp-controller="AdminShippers" asp-action="Delete" asp-route-id="@item.ShipperId">Xóa</a>
+                        </td>
+                    </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

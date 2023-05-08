@@ -1,0 +1,45 @@
+﻿@model DongHoDemo2.Models.Shipper
+
+@{
+    ViewData["Title"] = "Sửa thông tin người giao hàng";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="header">
+    <h1 class="page-header">
+        Sửa thông tin người giao hàng
+    </h1>
+    <ol class="breadcrumb">
+        <li><a asp-area="Admin" asp-controller="Home" asp-action="Index">Trang chủ</a></li>
+        <li><a asp-area="Admin" asp-controller="AdminShippers" asp-action="Index">Quản lý người giao hàng</a></li>
+        <li><a asp-area="Admin" asp-controller="AdminShippers" asp-action="Edit">Sửa thông tin người giao hàng</a></li>
+    </ol>
+</div>
+<form asp-action="Edit" asp-route-id="@Model.ShipperId" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="ShipperId" />
+    <div class="card">
+        <div class="card-content">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover">
+                    <tbody>
+                        <tr>
+                            <td> <b>Tên người giao hàng:</b></td>
+                            <td> <input type="text" class="form-control" asp-for="ShipperName" id="inputShipperName" placeholder="Tên người giao hàng"></td>
+                        </tr>
+                        <tr>
+                            <td> <b>Điện thoại:</b></td>
+                            <td> <input type="text" id="inputPhone" asp-for="Phone" placeholder="Điện thoại"></td>
+                        </tr>
+                        <tr>
+                            <td> <b>Công ty:</b></td>
+                            <td> <input type="text" id="inputCom" asp-for="Company" placeholder="Công ty"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <a class="btn btn-success btn-group m-md-3" asp-action="Index">Quay lại</a>
+            <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+        </div>
+    </div>
+</form>
+
